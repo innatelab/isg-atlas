@@ -2,12 +2,8 @@ from scipy.signal import savgol_filter,medfilt
 import pandas as pd
 import numpy as np
 
-
-
-
-
 def remove_initial_noise(col):
-    #the min value is expected to be in the first few timepoints (until 9h?)
+    #the min value is expected to be in the first few timepoints (until 9h)
     try:
         col=col.dropna()
         col.loc[:col.loc[:9].idxmin()] = col.loc[:9].min()
