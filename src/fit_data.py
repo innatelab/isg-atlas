@@ -7,11 +7,13 @@ from sklearn.metrics import r2_score
 from sklearn.linear_model import LinearRegression
 
 def sigmoid(t, K ,tau, b, c):
+    '''Sigmoid function of the form K/(1+exp(-b*(t-tau))) + c'''
     y = K / (1 + np.exp(-b*(t-tau))) + c
     return (y)
 
 
 def sigmoid_fit(col):
+    '''Fit a sigmoid to a column of data'''
     try:
         col=col.dropna().truncate(after=col.idxmax())
         if len(col)<=4:
@@ -24,8 +26,6 @@ def sigmoid_fit(col):
         rmse_=rmse(col.values.flatten(),fitted_values)
         r_squared=r2_score(col.values.flatten(),fitted_values)
         r_squared_adj=1-(1-r_squared)*(len(col)-1)/(len(col)-len(popt)-1)
-        #col=pd.Series(sigmoid(col.index,K,tau,beta,c),index=col.index)
-        #return col
         return pd.Series({
         'c':c, 
         'K':K,
@@ -34,7 +34,6 @@ def sigmoid_fit(col):
         "r_squared":r_squared,
         "r_squared_adj":r_squared_adj,
         "rmse":rmse_,
-        # "fitted_values":pd.Series(fitted_values,index=col.index),
         })
     except:
         return  pd.Series({
@@ -45,14 +44,15 @@ def sigmoid_fit(col):
         "r_squared":np.nan,
         "r_squared_adj":np.nan,
         "rmse":np.nan,
-        # "fitted_values":np.nan,
         })
 
 
 def exp_func(t, a, b):
+    '''Exponential function of the form a*exp(b*t)'''
     return a * np.exp(b * t)
 
 def exponential_fit(col):
+    '''Fit an exponential to a column of data'''
     col=col.dropna()
     t=col.index
     y=col.values.flatten()
@@ -61,22 +61,18 @@ def exponential_fit(col):
         popt, _ = curve_fit(exp_func, t, y, p0)
         r_squared=r2_score(y,exp_func(t,*popt))
         r_squared_adj=1-(1-r_squared)*(len(col)-1)/(len(col)-len(popt)-1)
-        # fitted_values=pd.Series(exp_func(x,*popt),index=x)
         a=popt[0]
         b=popt[1]
-        #fitted_values=pd.Series(exp_func(x,*popt),index=x)
     except:
         a=np.nan
         b=np.nan
         r_squared=np.nan
         r_squared_adj=np.nan
-        #fitted_values=np.nan
     return pd.Series({
         "starting_GII":a,
         "growth_rate":b,
-        'r_2':r_squared,
-        'r_2_adj':r_squared_adj,
-        #"fitted_values":fitted_values
+        'r_squared':r_squared,
+        'r_squared_adj':r_squared_adj,
     })
 
 def viability_linear_fit(col):
