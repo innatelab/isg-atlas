@@ -17,3 +17,5 @@
    ```pip install -r requirements.txt```
    
 8. Start jupyter notebook ```jupyter notebook main_analysis.ipynb```
+
+More info about creating a virtual environment and installing packages can be found [here](https://docs.python.org/3/library/venv.html).
