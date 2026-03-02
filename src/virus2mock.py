@@ -1,7 +1,16 @@
-'''
-This file contains the mapping for each virus experiment to its corresponding mock experiment.
-'''
-virus2mock={
+"""Mapping from virus-infected plate IDs to their matched mock-infected controls.
+
+Each key is a plate identifier of the form ``V<virus>_S<set>_R<rep>``
+(e.g. ``'V1_S1_R1'``) and the corresponding value is the mock plate ID
+(``V0_S<set>_R<rep>``) that was run on the same day and passage and therefore
+serves as the appropriate baseline for normalisation.
+
+The mapping encodes the experimental design: up to 5 virus plates were
+matched per mock plate, rotating mock-plate assignments within each set
+and biological replicate to account for passage variability.
+"""
+
+virus2mock = {
     'V1_S1_R1':'V0_S1_R1',
     'V2_S1_R1':'V0_S1_R1',
     'V3_S1_R1':'V0_S1_R1',
