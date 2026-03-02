@@ -2,8 +2,9 @@
 
 Analysis code for the live-cell imaging (Incucyte) ISG screen described in:
 
-<!-- > **[Paper title]** — *Authors et al., Journal, Year.*  
-> DOI: [doi link] -->
+> **The ISG Atlas: A Loss-Of-Function Analysis Characterizes Antiviral Properties of Interferon Stimulated Genes** — *Krey et al., Nature Communications, 2026.*  
+<!-- > DOI: [link to be added] -->
+
 
 ---
 
