@@ -2,8 +2,8 @@
 
 Analysis code for the live-cell imaging (Incucyte) ISG screen described in:
 
-> **[Paper title]** — *Authors et al., Journal, Year.*  
-> DOI: [doi link]
+<!-- > **[Paper title]** — *Authors et al., Journal, Year.*  
+> DOI: [doi link] -->
 
 ---
 
